@@ -1,29 +1,16 @@
 document.documentElement.classList.add('js');
 
-// ---- Reveal projects as they scroll into view ----
-const projects = document.querySelectorAll('.project');
+// ---- Reveal chapters as they scroll into view ----
+const chapters = document.querySelectorAll('.chapter');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     }
-  }, { rootMargin: '0px 0px -10% 0px' });
-  projects.forEach(p => io.observe(p));
+  }, { rootMargin: '0px 0px -8% 0px' });
+  chapters.forEach(c => io.observe(c));
 } else {
-  projects.forEach(p => p.classList.add('in'));
-}
-
-// ---- Gentle 3D tilt on the hero image ----
-const tilt = document.querySelector('[data-tilt]');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (tilt && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
-  tilt.addEventListener('mousemove', (ev) => {
-    const r = tilt.getBoundingClientRect();
-    const x = (ev.clientX - r.left) / r.width - 0.5;
-    const y = (ev.clientY - r.top) / r.height - 0.5;
-    tilt.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-  });
-  tilt.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
+  chapters.forEach(c => c.classList.add('in'));
 }
 
 // ---- Lightbox ----
@@ -33,12 +20,17 @@ const lbCap = document.getElementById('lb-cap');
 const zoomables = Array.from(document.querySelectorAll('.zoomable'));
 let current = -1;
 
+function captionFor(img) {
+  const fig = img.closest('figure');
+  const cap = fig && fig.querySelector('figcaption');
+  return cap ? cap.textContent : img.alt;
+}
 function show(i) {
   current = (i + zoomables.length) % zoomables.length;
   const src = zoomables[current];
   lbImg.src = src.currentSrc || src.src;
   lbImg.alt = src.alt;
-  lbCap.textContent = src.alt;
+  lbCap.textContent = captionFor(src);
   lb.hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -60,5 +52,5 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') show(current + 1);
 });
 
-// ---- Footer year ----
+// ---- Year in the colophon ----
 document.getElementById('year').textContent = new Date().getFullYear();

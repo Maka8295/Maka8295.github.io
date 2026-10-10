@@ -1,6 +1,8 @@
-# maka.hardware — project portfolio
+# The Codex of Boards — project portfolio
 
-Static site for GitHub Pages. No build step: plain HTML, CSS and JS plus WebP images.
+Static site for GitHub Pages styled as an illuminated manuscript. No build step: plain HTML, CSS and JS plus WebP images.
+
+Headings use Cloister Black, bundled in `assets/fonts/`. Body text is EB Garamond from Google Fonts.
 
 ## Layout
 
@@ -9,6 +11,7 @@ index.html      page content (one <article class="project"> per project)
 styles.css      theme and layout
 script.js       lightbox, scroll reveal, hero tilt
 assets/         WebP images (KiCad renders, photos, schematics)
+assets/fonts/   Cloister Black (blackletter) for headings
 .nojekyll       tells GitHub Pages to serve files as-is, skipping Jekyll
 ```
 
@@ -36,9 +39,10 @@ Every later `git push` to `main` redeploys automatically.
 
 ## Add a project
 
-Copy one `<article class="project">` block in `index.html`, change the text,
-images and GitHub link. Add `class="flip"` to alternate the image side.
-Give `.gallery` the class `two` or `one` when there are only a couple of images.
+Copy one `<article class="chapter">` block in `index.html`, change the chapter
+numeral, text, images and link, and add an entry to the table of contents.
+For a closed-source project add `class="chapter sealed"` and use the
+`<p class="source closed">` line instead of the open-source one.
 
 ## Regenerate board renders
 
