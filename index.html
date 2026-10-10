@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maka — PCB &amp; Hardware Projects</title>
+  <meta name="description" content="Hardware projects by Maka: hall effect keyboards, FT2232H debug tools, ESP32-S3 boards, FPGA and retro console re-engineering.">
+  <meta property="og:title" content="Maka — PCB & Hardware Projects">
+  <meta property="og:description" content="Keyboards, debug tools, FPGA boards and retro console re-engineering, designed in KiCad.">
+  <meta property="og:image" content="assets/lucca58he-photo2.webp">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-dot"></span>
+    <span>maka<span class="muted">.hardware</span></span>
+  </a>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="https://github.com/Maka8295" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">KiCad · RP2040 · ESP32 · FPGA</p>
+      <h1>Boards I design,<br>build and type on.</h1>
+      <p class="lede">
+        Hall effect keyboards, debug tooling, FPGA experiments and a re-engineered
+        Super Famicom. Everything here is open hardware, drawn in KiCad and assembled by hand.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn ghost" href="https://github.com/Maka8295" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+    </div>
+    <figure class="hero-art" data-tilt>
+      <img src="assets/lucca58he-photo2.webp" alt="Lucca 58HE left half with blue RGB underglow" width="1800" height="1350" fetchpriority="high">
+      <figcaption>Lucca 58HE · hall effect split keyboard</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p class="muted">Click any image to view it full size.</p>
+    </div>
+
+    <!-- Lucca 58HE -->
+    <article class="project" id="lucca-58he">
+      <figure class="project-hero">
+        <img class="zoomable" src="assets/lucca58he-photo1.webp" alt="Both halves of the Lucca 58HE keyboard with coiled cable" width="1800" height="1350" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">Keyboard · Hall effect · Working daily driver</p>
+        <h3>Lucca 58HE</h3>
+        <p>
+          A 58-key hall effect split keyboard. Every key sits over a DRV5053 analogue hall sensor,
+          read through an ADG732 32-channel multiplexer into the RP2040's ADC. Measured travel
+          resolution is about 7&nbsp;µm, which makes rapid trigger and adjustable actuation
+          from 0 to 3.5&nbsp;mm possible in firmware.
+        </p>
+        <ul class="specs">
+          <li><b>MCU</b> Waveshare RP2040-Zero per half</li>
+          <li><b>Sensing</b> DRV5053 hall sensors via ADG732 mux</li>
+          <li><b>Lighting</b> SK6803 Mini-E per-key RGB + 10-point underglow</li>
+          <li><b>Link</b> USB-C, SPI or UART between halves</li>
+          <li><b>Extras</b> SSD1306 OLED, 3D-printed case, KMK firmware</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/Lucca-58HE" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="gallery">
+        <img class="zoomable" src="assets/lucca58he-photo3.webp" alt="Lucca 58HE in white and blue keycaps" loading="lazy">
+        <img class="zoomable" src="assets/lucca58he-photo4.webp" alt="Lucca 58HE left half, close up" loading="lazy">
+        <img class="zoomable render" src="assets/lucca58he-lhs-iso.webp" alt="3D render of the Lucca 58HE left PCB" loading="lazy">
+        <img class="zoomable render" src="assets/lucca58he-lhs-top.webp" alt="Top view render of the left PCB" loading="lazy">
+        <img class="zoomable render" src="assets/lucca58he-rhs-top.webp" alt="Top view render of the right PCB" loading="lazy">
+      </div>
+    </article>
+
+    <!-- FT2232H breakout -->
+    <article class="project flip" id="ft2232h">
+      <figure class="project-hero">
+        <img class="zoomable render" src="assets/ft2232h-iso.webp" alt="3D render of the FT2232H breakout board" width="1800" height="1100" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">Debug tool · USB to JTAG / SPI / I2C / UART</p>
+        <h3>FT2232H Breakout with Level Shifting</h3>
+        <p>
+          A dual-channel FT2232H breakout for poking at other people's hardware. Both channels
+          pass through SN74LVC8T245 level shifters, so the target side can run at 1.8, 2.5, 3.3 or
+          5&nbsp;V by flipping a DIP switch. A hardware isolation switch lets you detach a chip clip
+          from the target without unplugging anything, and DIP-selectable 4.7&nbsp;kΩ pull-ups make
+          I2C work on either channel.
+        </p>
+        <ul class="specs">
+          <li><b>Bridge</b> FTDI FT2232HL, USB-C</li>
+          <li><b>Shifting</b> 2× SN74LVC8T245, selectable VTARGET</li>
+          <li><b>Power</b> LDK130 1.8 / 2.5 V, AP2112K 3.3 V</li>
+          <li><b>Protection</b> USBLC6-2 ESD on USB</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/FT2232H-Breakout-board" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="gallery">
+        <img class="zoomable" src="assets/ft2232h-assembled.webp" alt="Assembled FT2232H breakout board" loading="lazy">
+        <img class="zoomable render" src="assets/ft2232h-top.webp" alt="Top view render" loading="lazy">
+        <img class="zoomable render" src="assets/ft2232h-bottom.webp" alt="Bottom view render" loading="lazy">
+        <img class="zoomable" src="assets/ft2232h-layout.webp" alt="PCB layout" loading="lazy">
+        <img class="zoomable" src="assets/ft2232h-schematic.webp" alt="Schematic" loading="lazy">
+      </div>
+    </article>
+
+    <!-- Lucca58 -->
+    <article class="project" id="lucca58">
+      <figure class="project-hero">
+        <img class="zoomable render" src="assets/lucca58-iso.webp" alt="3D render of the Lucca58 keyboard PCB" width="1800" height="1100" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">Keyboard · Mechanical switches</p>
+        <h3>Lucca58</h3>
+        <p>
+          The mechanical-switch sibling of the 58HE. Same 58-key split footprint, but with
+          conventional hot-swap switches instead of hall sensors, which makes it a much simpler
+          and cheaper build. Two PCB variants exist: a columnar layout and a row-staggered one.
+        </p>
+        <ul class="specs">
+          <li><b>Layouts</b> Columnar and row-staggered variants</li>
+          <li><b>Connector</b> USB-C</li>
+          <li><b>Fabrication</b> JLCPCB-ready production files included</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/Lucca58" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="gallery two">
+        <img class="zoomable render" src="assets/lucca58-top.webp" alt="Top view render, columnar layout" loading="lazy">
+        <img class="zoomable render" src="assets/lucca58stagger-top.webp" alt="Top view render, staggered layout" loading="lazy">
+      </div>
+    </article>
+
+    <!-- Lazy Kiwi -->
+    <article class="project flip" id="lazy-kiwi">
+      <figure class="project-hero">
+        <img class="zoomable render" src="assets/lazykiwi-iso.webp" alt="3D render of the Lazy Kiwi ESP32-S3 board" width="1800" height="1100" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">Wireless · ESP32-S3</p>
+        <h3>Lazy Kiwi</h3>
+        <p>
+          A compact ESP32-S3 board with its own PCB antenna, external PSRAM and flash, and a
+          USB-C port straight into the chip's native USB. It is laid out to be a drop-in
+          wireless brain for other projects, with boot and reset buttons on board.
+        </p>
+        <ul class="specs">
+          <li><b>SoC</b> ESP32-S3 with onboard PCB antenna</li>
+          <li><b>Memory</b> ESP-PSRAM64H (8 MB) + W25Q128 (16 MB) flash</li>
+          <li><b>USB</b> USB-C with USBLC6-2 ESD protection</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/Lazy-Kiwi" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="gallery one">
+        <img class="zoomable render" src="assets/lazykiwi-top.webp" alt="Top view render" loading="lazy">
+      </div>
+    </article>
+
+    <!-- SFFSFC -->
+    <article class="project" id="sffsfc">
+      <figure class="project-hero">
+        <img class="zoomable" src="assets/sffsfc-schematic.webp" alt="Colour-coded Super Famicom schematic" width="1800" height="1386" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">Retro · Console re-engineering · In progress</p>
+        <h3>SFFSFC</h3>
+        <p>
+          A small-form-factor re-engineering of the Super Famicom revision 2 motherboard.
+          The original two-layer board is being redrawn on four layers with HDMI and TOSLINK
+          outputs integrated, so a stock SFC chipset can drive a modern display without an
+          external scaler. Currently in schematic capture.
+        </p>
+        <ul class="specs">
+          <li><b>Target</b> SFC / SNES revision 2 chipset</li>
+          <li><b>Stackup</b> 4 layers</li>
+          <li><b>Outputs</b> HDMI video, TOSLINK audio</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/SFFSFC" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- glamdring -->
+    <article class="project flip" id="glamdring">
+      <figure class="project-hero">
+        <img class="zoomable render" src="assets/glamdring-iso.webp" alt="3D render of the glamdring FPGA board, early stage" width="1800" height="1100" loading="lazy">
+      </figure>
+      <div class="project-body">
+        <p class="eyebrow">FPGA · Intel Cyclone V · In progress</p>
+        <h3>glamdring</h3>
+        <p>
+          A Cyclone V FPGA development board with an ADV7513 HDMI transmitter on the output side.
+          Schematic sheets for HDMI, Ethernet, USB, RAM and USB-PD power are drafted and the
+          board is at the early layout stage.
+        </p>
+        <ul class="specs">
+          <li><b>FPGA</b> Intel Cyclone V</li>
+          <li><b>Video</b> ADV7513 HDMI transmitter</li>
+          <li><b>Planned</b> Ethernet, USB, SDRAM, USB-PD input</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/Maka8295/glamdring" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="gallery one">
+        <img class="zoomable render" src="assets/glamdring-top.webp" alt="Top view render" loading="lazy">
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    <div class="about-grid">
+      <div>
+        <h2>About</h2>
+        <p>
+          I design PCBs in KiCad, mostly around RP2040, ESP32 and FPGA parts, and I keep a
+          <a href="https://github.com/Maka8295/parts" target="_blank" rel="noopener">shared symbol and footprint library</a>
+          that all of these boards pull from. The 3D views on this page are rendered straight
+          from the KiCad board files.
+        </p>
+        <p>
+          Find me on <a href="https://github.com/Maka8295" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+      <ul class="stack">
+        <li>KiCad 10</li><li>RP2040</li><li>ESP32-S3</li><li>Cyclone V</li>
+        <li>KMK / CircuitPython</li><li>JLCPCB</li><li>Hand soldering</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>© <span id="year"></span> Maka</span>
+  <span class="muted">Built with plain HTML, CSS and KiCad renders. Hosted on GitHub Pages.</span>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" aria-label="Close">×</button>
+  <button class="lb-prev" aria-label="Previous">‹</button>
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button class="lb-next" aria-label="Next">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
