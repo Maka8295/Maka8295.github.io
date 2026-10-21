@@ -3,86 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>dungeonOS — Boards by Maka</title>
-  <meta name="description" content="Printed circuit boards by Maka: hall effect keyboards, flash dumpers, a conference badge, FPGA boards and a re-engineered Super Famicom. Themed after dungeonOS.">
-  <meta property="og:title" content="dungeonOS — Boards by Maka">
+  <title>Boards by Maka</title>
+  <meta name="description" content="Printed circuit boards by Maka: hall effect keyboards, flash dumpers, a conference badge, FPGA boards and a re-engineered Super Famicom.">
+  <meta property="og:title" content="Boards by Maka">
   <meta property="og:description" content="Keyboards, debug tools, badges, FPGA and retro console work, designed in KiCad.">
   <meta property="og:image" content="assets/lucca58he-photo2.webp">
   <meta name="theme-color" content="#1A1816">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ============ THE BAR (waybar) ============ -->
-<aside class="bar" aria-label="Navigation">
-  <div class="panel bar-top">
-    <a class="clock" href="#top" title="Top"><span id="clock-time">--:--</span><span id="clock-date">--/--</span></a>
-    <a class="icon" href="#about" title="About">♜</a>
-    <a class="icon" href="https://github.com/Maka8295" target="_blank" rel="noopener" title="GitHub">⌘</a>
-  </div>
-  <nav class="panel bar-mid workspaces" aria-label="Chapters">
-    <a href="#lucca-58he" data-ws="1" title="Lucca 58HE">I</a>
-    <a href="#ft2232h" data-ws="2" title="FT2232H Breakout">II</a>
-    <a href="#flumper" data-ws="3" title="Flumper">III</a>
-    <a href="#badge-2026" data-ws="4" title="Badge 2026">IV</a>
-    <a href="#shuriken2" data-ws="5" title="Shuriken 2">V</a>
-    <a href="#lucca58" data-ws="6" title="Lucca58">VI</a>
-    <a href="#lazy-kiwi" data-ws="7" title="Lazy Kiwi">VII</a>
-    <a href="#sffsfc" data-ws="8" title="SFFSFC">VIII</a>
-    <a href="#glamdring" data-ws="9" title="glamdring">IX</a>
+<header class="top">
+  <a class="brand" href="#top">Maka</a>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="https://github.com/Maka8295" target="_blank" rel="noopener">GitHub</a>
   </nav>
-  <div class="panel bar-bottom">
-    <a class="icon" href="#contents" title="Contents">≡</a>
-    <a class="icon" href="#top" title="Back to top">⌃</a>
-    <a class="icon power" href="#about" title="Colophon">♰</a>
-  </div>
-</aside>
+</header>
 
-<main id="top" class="desk">
+<main id="top" class="page">
 
-  <!-- ============ TERMINAL: greeting ============ -->
-  <section class="window term" id="greeting">
-    <p class="greet"><span class="cross">♰</span> <span id="oe" lang="ang">Wes hāl</span> <span class="cross">♱</span> <span id="oe-en">Be well</span> <span class="cross">♰</span></p>
-    <p class="prompt"><span class="user">maka@makapc</span> <span class="path">~/PCBs</span></p>
-    <p class="cmd"><span class="cross">♰</span> <span class="typed">cat README.md</span></p>
-    <h1>Boards by <span class="bl">Maka</span></h1>
-    <p class="out">
-      Hall effect keyboards, a flash dumper, a conference badge, FPGA experiments and a
-      re-engineered Super Famicom. Every board drawn in KiCad; every 3D view on this page
-      rendered straight from its board file. Works made for my employer are sealed <span class="cross">♰</span>
-      and stay closed.
-    </p>
-    <p class="prompt"><span class="user">maka@makapc</span> <span class="path">~/PCBs</span></p>
-    <p class="cmd"><span class="cross">♰</span> <span class="typed">ls</span><span class="caret"></span></p>
-    <ol class="ls" id="contents">
-      <li><a href="#lucca-58he"><span class="n">I</span> Lucca-58HE/</a><em>hall effect split keyboard</em></li>
-      <li><a href="#ft2232h"><span class="n">II</span> FT2232H-Breakout/</a><em>level-shifted debug bridge</em></li>
-      <li><a href="#flumper"><span class="n">III</span> flumper/</a><em>flash dumper, three editions <b class="sealed-mark" title="closed source">♰</b></em></li>
-      <li><a href="#badge-2026"><span class="n">IV</span> Badge2026/</a><em>TENGUCON 3.0 badge <b class="sealed-mark" title="closed source">♰</b></em></li>
-      <li><a href="#shuriken2"><span class="n">V</span> shuriken2/</a><em>multifunction controller <b class="sealed-mark" title="closed source">♰</b></em></li>
-      <li><a href="#lucca58"><span class="n">VI</span> Lucca58/</a><em>the mechanical sibling</em></li>
-      <li><a href="#lazy-kiwi"><span class="n">VII</span> Lazy-Kiwi/</a><em>ESP32-S3 board</em></li>
-      <li><a href="#sffsfc"><span class="n">VIII</span> SFFSFC/</a><em>Super Famicom, re-engineered</em></li>
-      <li><a href="#glamdring"><span class="n">IX</span> glamdring/</a><em>Cyclone V FPGA board</em></li>
-    </ol>
-  </section>
-
-  <!-- ============ HERO IMAGE WINDOW ============ -->
-  <section class="window viewer hero">
-    <div class="tabbar"><span class="tab active"><i>▣</i> lucca58he-photo2.webp <b>×</b></span></div>
-    <figure>
+  <section class="intro">
+    <div class="intro-text">
+      <h1>Boards by <span>Maka</span></h1>
+      <p>
+        Hall effect keyboards, a flash dumper, a conference badge, FPGA experiments and a
+        re-engineered Super Famicom. Every board drawn in KiCad; every 3D view on this page
+        rendered straight from its board file. Works made for my employer are marked closed
+        and stay that way.
+      </p>
+      <ol class="toc" id="projects">
+        <li><a href="#lucca-58he">Lucca 58HE</a><em>hall effect split keyboard</em></li>
+        <li><a href="#ft2232h">FT2232H Breakout</a><em>level-shifted debug bridge</em></li>
+        <li><a href="#flumper">Flumper</a><em>flash dumper, three editions</em><b>closed</b></li>
+        <li><a href="#badge-2026">Badge 2026</a><em>TENGUCON 3.0 badge</em><b>closed</b></li>
+        <li><a href="#shuriken2">Shuriken 2</a><em>multifunction controller</em><b>closed</b></li>
+        <li><a href="#lucca58">Lucca58</a><em>the mechanical sibling</em></li>
+        <li><a href="#lazy-kiwi">Lazy Kiwi</a><em>ESP32-S3 board</em></li>
+        <li><a href="#sffsfc">SFFSFC</a><em>Super Famicom, re-engineered</em></li>
+        <li><a href="#glamdring">glamdring</a><em>Cyclone V FPGA board</em></li>
+      </ol>
+    </div>
+    <figure class="intro-art">
       <img class="zoomable" src="assets/lucca58he-photo2.webp" alt="Lucca 58HE left half with blue RGB underglow" width="1800" height="1350" fetchpriority="high">
+      <figcaption>Lucca 58HE</figcaption>
     </figure>
-    <div class="statusline"><span class="blk moss"></span><span class="branch"> master</span><span class="ft">webp</span><span class="grow"></span><span>1800×1350</span><span class="blk rust"></span></div>
   </section>
 
-  <!-- ============ I. LUCCA 58HE ============ -->
-  <article class="window chapter" id="lucca-58he" data-ws="1">
-    <div class="tabbar"><span class="ws">I</span><span class="tab active"><i>▣</i> Lucca1.0.kicad_pcb <b>×</b></span><span class="tab"><i>§</i> README.md</span></div>
+<article class="project" id="lucca-58he">
     <div class="body">
       <figure class="main">
         <img class="zoomable" src="assets/lucca58he-photo1.webp" alt="Both halves of the Lucca 58HE keyboard with coiled cable" loading="lazy">
@@ -104,7 +74,7 @@
           <dt>extra</dt><dd>SSD1306 OLED, 3D-printed case, KMK firmware</dd>
         </dl>
         <p class="note">Brought up under KMK and CircuitPython. This page was typed on it.</p>
-        <p class="source open"><a href="https://github.com/Maka8295/Lucca-58HE" target="_blank" rel="noopener"> Maka8295/Lucca-58HE</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/Lucca-58HE" target="_blank" rel="noopener">Maka8295/Lucca-58HE</a> · open hardware</p>
       </div>
     </div>
     <div class="gallery">
@@ -114,12 +84,9 @@
       <figure><img class="zoomable render" src="assets/lucca58he-lhs-top.webp" alt="Top view render of the left PCB" loading="lazy"><figcaption>LHS · top</figcaption></figure>
       <figure><img class="zoomable render" src="assets/lucca58he-rhs-top.webp" alt="Top view render of the right PCB" loading="lazy"><figcaption>RHS · top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk moss"></span><span class="branch"> main</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>184 footprints</span><span>2 layers</span><span class="blk moss"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ II. FT2232H ============ -->
-  <article class="window chapter" id="ft2232h" data-ws="2">
-    <div class="tabbar"><span class="ws">II</span><span class="tab active"><i>▣</i> flash.kicad_pcb <b>×</b></span><span class="tab"><i>§</i> README.md</span></div>
+<article class="project" id="ft2232h">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/ft2232h-iso.webp" alt="3D render of the FT2232H breakout board" loading="lazy">
@@ -139,7 +106,7 @@
           <dt>power</dt><dd>LDK130 1.8 / 2.5 V, AP2112K 3.3 V</dd>
           <dt>esd</dt><dd>USBLC6-2 on USB</dd>
         </dl>
-        <p class="source open"><a href="https://github.com/Maka8295/FT2232H-Breakout-board" target="_blank" rel="noopener"> Maka8295/FT2232H-Breakout-board</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/FT2232H-Breakout-board" target="_blank" rel="noopener">Maka8295/FT2232H-Breakout-board</a> · open hardware</p>
       </div>
     </div>
     <div class="gallery">
@@ -149,12 +116,9 @@
       <figure><img class="zoomable" src="assets/ft2232h-layout.webp" alt="PCB layout" loading="lazy"><figcaption>copper</figcaption></figure>
       <figure><img class="zoomable" src="assets/ft2232h-schematic.webp" alt="Schematic" loading="lazy"><figcaption>schematic</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk brass"></span><span class="branch"> main</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>76 footprints</span><span>2 layers</span><span class="blk brass"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ III. FLUMPER ============ -->
-  <article class="window chapter sealed" id="flumper" data-ws="3">
-    <div class="tabbar"><span class="ws">III</span><span class="tab active"><i>▣</i> flash.kicad_pcb <b>×</b></span><span class="tab"><i>§</i> writeup.txt</span><span class="lock" title="closed source">♰ sealed</span></div>
+<article class="project sealed" id="flumper">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/flumper03-iso.webp" alt="3D render of Flumper 0.3 with its FT4222H and memory cartridge socket" loading="lazy">
@@ -178,7 +142,7 @@
           <dt>power</dt><dd>LDK130 1.8 V, AP2112K 3.3 V</dd>
         </dl>
         <p class="note">memcart carries the chip and three solder jumpers; flumpcable reaches a footprint still soldered to its board.</p>
-        <p class="source closed"><span class="cross">♰</span> sealed · closed source, made for KAGE Engineering · no files published</p>
+        <p class="source closed">closed source, made for KAGE Engineering · no files published</p>
       </div>
     </div>
     <div class="gallery">
@@ -187,12 +151,9 @@
       <figure><img class="zoomable render" src="assets/memcart-iso.webp" alt="3D render of the memcart SPI flash cartridge" loading="lazy"><figcaption>memcart</figcaption></figure>
       <figure><img class="zoomable render" src="assets/flumper02-top.webp" alt="Top view render of Flumper 0.2" loading="lazy"><figcaption>0.2 · top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk rust"></span><span class="branch"> private</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>47 footprints</span><span>4 layers</span><span class="blk rust"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ IV. BADGE 2026 ============ -->
-  <article class="window chapter sealed" id="badge-2026" data-ws="4">
-    <div class="tabbar"><span class="ws">IV</span><span class="tab active"><i>▣</i> badge.kicad_pcb <b>×</b></span><span class="tab"><i>§</i> HARDWARE.md</span><span class="lock" title="closed source">♰ sealed</span></div>
+<article class="project sealed" id="badge-2026">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/badge-iso.webp" alt="3D render of the Badge 2026 conference badge" loading="lazy">
@@ -215,19 +176,16 @@
           <dt>store</dt><dd>microSD over SDMMC</dd>
         </dl>
         <p class="note">Firmware in Rust on ESP-IDF: LoRa chat, IR blaster that reads Flipper Zero files, SD explorer, ELF app loader.</p>
-        <p class="source closed"><span class="cross">♰</span> sealed · closed source · no files published</p>
+        <p class="source closed">closed source · no files published</p>
       </div>
     </div>
     <div class="gallery">
       <figure><img class="zoomable render" src="assets/badge-top.webp" alt="Top view render of the badge" loading="lazy"><figcaption>top</figcaption></figure>
       <figure><img class="zoomable render" src="assets/badge-bottom.webp" alt="Bottom view render of the badge" loading="lazy"><figcaption>bottom · module &amp; LoRa</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk steel"></span><span class="branch"> private</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>236 footprints</span><span>2 layers</span><span class="blk steel"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ V. SHURIKEN 2 ============ -->
-  <article class="window chapter sealed" id="shuriken2" data-ws="5">
-    <div class="tabbar"><span class="ws">V</span><span class="tab active"><i>▣</i> shuriken2.kicad_pcb <b>×</b></span><span class="lock" title="closed source">♰ sealed</span></div>
+<article class="project sealed" id="shuriken2">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/shuriken2-iso.webp" alt="3D render of the Shuriken 2 controller board" loading="lazy">
@@ -250,18 +208,15 @@
           <dt>store</dt><dd>microSD slot</dd>
         </dl>
         <p class="note">Its forebear ran an STM32G474 with CAN, RS485 and relays. The second trims that to what the benches use.</p>
-        <p class="source closed"><span class="cross">♰</span> sealed · closed source, made for KAGE Engineering · no files published</p>
+        <p class="source closed">closed source, made for KAGE Engineering · no files published</p>
       </div>
     </div>
     <div class="gallery">
       <figure><img class="zoomable render" src="assets/shuriken2-top.webp" alt="Top view render of Shuriken 2" loading="lazy"><figcaption>top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk moss"></span><span class="branch"> private</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>192 footprints</span><span>4 layers</span><span class="blk moss"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ VI. LUCCA58 ============ -->
-  <article class="window chapter" id="lucca58" data-ws="6">
-    <div class="tabbar"><span class="ws">VI</span><span class="tab active"><i>▣</i> Lucca58.kicad_pcb <b>×</b></span><span class="tab"><i>▣</i> Lucca58stagger.kicad_pcb</span></div>
+<article class="project" id="lucca58">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/lucca58-iso.webp" alt="3D render of the Lucca58 keyboard PCB" loading="lazy">
@@ -280,19 +235,16 @@
           <dt>conn</dt><dd>USB-C</dd>
           <dt>fab</dt><dd>production files included</dd>
         </dl>
-        <p class="source open"><a href="https://github.com/Maka8295/Lucca58" target="_blank" rel="noopener"> Maka8295/Lucca58</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/Lucca58" target="_blank" rel="noopener">Maka8295/Lucca58</a> · open hardware</p>
       </div>
     </div>
     <div class="gallery">
       <figure><img class="zoomable render" src="assets/lucca58-top.webp" alt="Top view render, columnar layout" loading="lazy"><figcaption>columnar · top</figcaption></figure>
       <figure><img class="zoomable render" src="assets/lucca58stagger-top.webp" alt="Top view render, staggered layout" loading="lazy"><figcaption>staggered · top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk brass"></span><span class="branch"> main</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>140 footprints</span><span>2 layers</span><span class="blk brass"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ VII. LAZY KIWI ============ -->
-  <article class="window chapter" id="lazy-kiwi" data-ws="7">
-    <div class="tabbar"><span class="ws">VII</span><span class="tab active"><i>▣</i> home.kicad_pcb <b>×</b></span></div>
+<article class="project" id="lazy-kiwi">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/lazykiwi-iso.webp" alt="3D render of the Lazy Kiwi ESP32-S3 board" loading="lazy">
@@ -311,18 +263,15 @@
           <dt>memory</dt><dd>ESP-PSRAM64H 8 MB, W25Q128 16 MB</dd>
           <dt>usb</dt><dd>USB-C, USBLC6-2 ESD</dd>
         </dl>
-        <p class="source open"><a href="https://github.com/Maka8295/Lazy-Kiwi" target="_blank" rel="noopener"> Maka8295/Lazy-Kiwi</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/Lazy-Kiwi" target="_blank" rel="noopener">Maka8295/Lazy-Kiwi</a> · open hardware</p>
       </div>
     </div>
     <div class="gallery">
       <figure><img class="zoomable render" src="assets/lazykiwi-top.webp" alt="Top view render" loading="lazy"><figcaption>top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk rust"></span><span class="branch"> main</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>88 footprints</span><span>2 layers</span><span class="blk rust"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ VIII. SFFSFC ============ -->
-  <article class="window chapter" id="sffsfc" data-ws="8">
-    <div class="tabbar"><span class="ws">VIII</span><span class="tab active"><i>§</i> mb.kicad_sch <b>×</b></span></div>
+<article class="project" id="sffsfc">
     <div class="body">
       <figure class="main">
         <img class="zoomable" src="assets/sffsfc-schematic.webp" alt="Colour-coded Super Famicom schematic" loading="lazy">
@@ -341,15 +290,12 @@
           <dt>stack</dt><dd>4 layers</dd>
           <dt>out</dt><dd>HDMI video, TOSLINK audio</dd>
         </dl>
-        <p class="source open"><a href="https://github.com/Maka8295/SFFSFC" target="_blank" rel="noopener"> Maka8295/SFFSFC</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/SFFSFC" target="_blank" rel="noopener">Maka8295/SFFSFC</a> · open hardware</p>
       </div>
     </div>
-    <div class="statusline"><span class="blk steel"></span><span class="branch"> main</span><span class="ft">kicad_sch</span><span class="grow"></span><span>schematic capture</span><span class="blk steel"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ IX. GLAMDRING ============ -->
-  <article class="window chapter" id="glamdring" data-ws="9">
-    <div class="tabbar"><span class="ws">IX</span><span class="tab active"><i>▣</i> glamdring.kicad_pcb <b>×</b></span><span class="tab"><i>§</i> hdmi.kicad_sch</span></div>
+<article class="project" id="glamdring">
     <div class="body">
       <figure class="main render">
         <img class="zoomable render" src="assets/glamdring-iso.webp" alt="3D render of the glamdring FPGA board, early stage" loading="lazy">
@@ -367,53 +313,36 @@
           <dt>video</dt><dd>ADV7513 HDMI transmitter</dd>
           <dt>planned</dt><dd>Ethernet, USB, SDRAM, USB-PD input</dd>
         </dl>
-        <p class="source open"><a href="https://github.com/Maka8295/glamdring" target="_blank" rel="noopener"> Maka8295/glamdring</a> · open hardware</p>
+        <p class="source open"><a href="https://github.com/Maka8295/glamdring" target="_blank" rel="noopener">Maka8295/glamdring</a> · open hardware</p>
       </div>
     </div>
     <div class="gallery">
       <figure><img class="zoomable render" src="assets/glamdring-top.webp" alt="Top view render" loading="lazy"><figcaption>top</figcaption></figure>
     </div>
-    <div class="statusline"><span class="blk moss"></span><span class="branch"> main</span><span class="ft">kicad_pcb</span><span class="grow"></span><span>18 footprints</span><span>layout begun</span><span class="blk moss"></span></div>
-  </article>
+    </article>
 
-  <!-- ============ ABOUT / COLOPHON ============ -->
-  <section class="window term" id="about">
-    <p class="prompt"><span class="user">maka@makapc</span> <span class="path">~/PCBs</span></p>
-    <p class="cmd"><span class="cross">♰</span> <span class="typed">neofetch</span></p>
-    <div class="fetch">
-      <pre class="sigil" aria-hidden="true">   ♰
-  ╱ ╲
- ╱♰ ♰╲
- ╲   ╱
-  ╲ ╱
-   ♱</pre>
-      <dl class="fetch-list">
-        <dt>user</dt><dd>maka</dd>
-        <dt>os</dt><dd>dungeonOS (<a href="https://github.com/Maka8295/Dotfiles" target="_blank" rel="noopener">Hyprland dotfiles</a>)</dd>
-        <dt>eda</dt><dd>KiCad 10, with a <a href="https://github.com/Maka8295/parts" target="_blank" rel="noopener">shared symbol &amp; footprint library</a></dd>
-        <dt>mcu</dt><dd>RP2040, ESP32-S3, STM32, Cyclone V</dd>
-        <dt>fab</dt><dd>JLCPCB, hand soldering</dd>
-        <dt>type</dt><dd>Cloister Black, Fantasque Sans Mono, UnifrakturMaguntia</dd>
-        <dt>cursor</dt><dd>Final Fantasy Tactics item sprites, as on the desktop</dd>
-        <dt>renders</dt><dd>kicad-cli pcb render, from the board files</dd>
-        <dt>git</dt><dd><a href="https://github.com/Maka8295" target="_blank" rel="noopener">github.com/Maka8295</a></dd>
-      </dl>
-    </div>
-    <p class="swatches" aria-hidden="true"><i class="bg"></i><i class="sf"></i><i class="band"></i><i class="bronze"></i><i class="fg"></i><i class="moss"></i><i class="sage"></i><i class="brass"></i><i class="clay"></i><i class="steel"></i><i class="rust"></i></p>
-    <p class="prompt"><span class="user">maka@makapc</span> <span class="path">~/PCBs</span></p>
-    <p class="cmd"><span class="cross">♰</span> <span class="caret"></span> <span class="muted">© <span id="year"></span> Maka · works marked ♰ are closed · all else is free to study, copy and build</span></p>
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p>
+      I design PCBs in KiCad, mostly around RP2040, ESP32 and FPGA parts, and keep a
+      <a href="https://github.com/Maka8295/parts" target="_blank" rel="noopener">shared symbol and footprint library</a>
+      that all of these boards pull from. The 3D views were rendered from the board files with
+      kicad-cli. Projects marked closed were made for KAGE Engineering and have no public files;
+      everything else is free to study, copy and build.
+    </p>
+    <p>Find me on <a href="https://github.com/Maka8295" target="_blank" rel="noopener">GitHub</a>.</p>
   </section>
 
 </main>
 
-<!-- Lightbox -->
+<footer class="foot">© <span id="year"></span> Maka</footer>
+
 <div class="lightbox" id="lightbox" hidden>
   <button class="lb-close" aria-label="Close">×</button>
   <button class="lb-prev" aria-label="Previous">‹</button>
-  <figure class="window viewer">
-    <div class="tabbar"><span class="tab active"><i>▣</i> <span id="lb-name">image</span> <b>×</b></span></div>
-    <div class="lb-stage"><div class="potion" id="lb-loading" aria-hidden="true"></div><img id="lb-img" alt=""></div>
-    <div class="statusline"><span class="blk moss"></span><span id="lb-cap"></span><span class="grow"></span><span id="lb-count"></span><span class="blk rust"></span></div>
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption><span id="lb-cap"></span><span id="lb-count"></span></figcaption>
   </figure>
   <button class="lb-next" aria-label="Next">›</button>
 </div>
