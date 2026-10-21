@@ -1,62 +1,50 @@
-# The Codex of Boards — project portfolio
+# Boards by Maka — dungeonOS edition
 
-Static site for GitHub Pages styled as an illuminated manuscript. No build step: plain HTML, CSS and JS plus WebP images.
-
-Headings use Cloister Black, bundled in `assets/fonts/`. Body text is EB Garamond from Google Fonts.
+Static site for GitHub Pages, themed after the dungeonOS desktop in `~/Dotfiles`:
+the stone-and-bronze palette, the 1px bronze / 3px band double-rule frame with its
+drop shadow, Cloister Black for UI text, a left-hand bar with roman-numeral
+workspaces, the King's College Chapel wallpaper, and the Final Fantasy Tactics
+item sprites as cursors. No build step: plain HTML, CSS and JS plus WebP images.
 
 ## Layout
 
 ```
-index.html      page content (one <article class="project"> per project)
-styles.css      theme and layout
-script.js       lightbox, scroll reveal, hero tilt
-assets/         WebP images (KiCad renders, photos, schematics)
-assets/fonts/   Cloister Black (blackletter) for headings
-.nojekyll       tells GitHub Pages to serve files as-is, skipping Jekyll
+index.html         one <article class="window chapter"> per project, plus two terminal windows
+styles.css         palette, frame, bar, windows, lightbox, cursors
+script.js          clock, random Old English greeting, workspace scroll-spy, lightbox
+assets/            WebP images (KiCad renders, photos, schematics), wallpaper
+assets/fonts/      CloisterBlack.ttf, Fantasque.woff2 (subset), azukiB-numerals.woff2 (subset),
+                   DejaVuSymbols.woff2 (♰ and icons)
+assets/cursors/    FFT sprites at 2× for CSS cursors, and the potions strip for the loader
+.nojekyll          tells GitHub Pages to serve files as-is
 ```
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Create an empty public repo on GitHub named `Maka8295.github.io`
-   (that name gives you the root URL `https://maka8295.github.io/`).
-   Any other repo name works too and will be served at `https://maka8295.github.io/<repo>/`.
-2. From this folder:
-
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial site"
-   git branch -M main
-   git remote add origin git@github.com:Maka8295/Maka8295.github.io.git
-   git push -u origin main
-   ```
-
-3. On GitHub: **Settings → Pages → Build and deployment**.
-   Source: **Deploy from a branch**. Branch: `main`, folder `/ (root)`. Save.
-4. Wait a minute or two. The live URL appears at the top of the Pages settings.
-
-Every later `git push` to `main` redeploys automatically.
+Push to `master`. Pages is set to deploy from that branch at the root, so every push redeploys.
 
 ## Add a project
 
-Copy one `<article class="chapter">` block in `index.html`, change the chapter
-numeral, text, images and link, and add an entry to the table of contents.
-For a closed-source project add `class="chapter sealed"` and use the
-`<p class="source closed">` line instead of the open-source one.
+Copy one `<article class="window chapter">` block, give it the next numeral in its tab bar,
+set `data-ws` to the same number, and add matching entries to the bar's workspace list and
+the `ls` listing in the greeting window. For a closed-source project add `sealed` to the
+article's class, keep the `♰ sealed` tab, and use the `<p class="source closed">` line.
 
-## Regenerate board renders
+## Regenerate things
 
-Renders come straight from the KiCad board files (KiCad 8 or newer):
+Board renders (KiCad 8 or newer):
 
 ```bash
-# isometric
 kicad-cli pcb render -o out.png -w 2000 -h 1250 --quality high --background transparent \
-  --perspective --rotate "-30,0,25" --zoom 0.9 path/to/board.kicad_pcb
-# top view
+  --perspective --rotate "-30,0,25" --zoom 0.9 path/to/board.kicad_pcb    # isometric
 kicad-cli pcb render -o out.png -w 2000 -h 1250 --quality high --background transparent \
-  --zoom 1.0 path/to/board.kicad_pcb
-# to web size
+  --zoom 1.0 path/to/board.kicad_pcb                                        # top view
 magick out.png -trim +repage -resize 1800x1800\> -quality 82 assets/name.webp
 ```
 
 Photos: `magick photo.jpg -auto-orient -strip -resize 1800x1800\> -quality 84 assets/name.webp`
+
+Cursors, after editing `~/Dotfiles/cursor/dungeonOS-cursor-src/fft/`: scale each 24px sprite
+2× with nearest-neighbour into `assets/cursors/`; hotspots in `styles.css` follow `build.py`.
+
+Greetings: the list in `script.js` mirrors `~/Dotfiles/fish/greetings.txt`.
